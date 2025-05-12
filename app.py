@@ -52,16 +52,23 @@ proximity = st.slider("🏭 Proximidad a zonas industriales (km)", 1.0, 25.0, 10
 pop_density = st.slider("👥 Densidad poblacional (personas/km²)", 188.0, 1000.0, 500.0)
 
 # --- CREAR DATAFRAME ---
-data = pd.DataFrame({
-    'Temperature': [temperature],
-    'Humidity': [humidity],
-    'PM10': [pm10],
-    'NO2': [no2],
-    'SO2': [so2],
-    'CO': [co],
-    'Proximity_to_Industrial_Areas': [proximity],
-    'Population_Density': [pop_density]
-})
+columns = [
+    'Temperature',
+    'NO2',
+    'SO2',
+    'CO',
+    'Proximity_to_Industrial_Areas',
+    'Population_Density'
+]
+
+data = pd.DataFrame([[
+    temperature,
+    no2,
+    so2,
+    co,
+    proximity,
+    pop_density
+]], columns=columns)
 
 # --- PREDICCIÓN ---
 if st.button("🔍 Predecir calidad del aire"):
